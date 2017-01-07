@@ -9,11 +9,11 @@ class Game
 
   def play_turn(player)
     move = player.get_move
-    @board[1, 1] = player.marker
-    p @board.winner?(player.marker)
+    @board[*move] = player.marker
+    @board.winner?(player.marker)
   end
 
-  def print_board
-    @board.print_grid
+  def display_board
+    @board.display
   end
 end

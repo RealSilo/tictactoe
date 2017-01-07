@@ -8,14 +8,8 @@ class Board
     @grid = Array.new(HEIGHT) { Array.new(WIDTH, :" ")  }
   end
 
-  def print_grid
-    @grid.each do |row|
-      puts
-      row.each do |cell|
-        print "[#{cell}]"
-      end
-    end
-    puts
+  def display
+    @grid.reduce("\n") { |output, row| output << format_row(row) } << "\n"
   end
 
   def winner?(marker)
@@ -57,4 +51,10 @@ class Board
       false
     end
   end
+
+  private
+
+    def format_row(row)
+      row.reduce("") { |row_string, cell| row_string << "[#{cell}]" } << "\n"
+    end
 end
