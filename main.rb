@@ -14,6 +14,7 @@ game.display_board
 puts "Player one, pick a move."
 game.play_turn(players[0])
 puts game.display_board
+
 #TODO play turn(player)
 
   #TODO: Get a move from player one
