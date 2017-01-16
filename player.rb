@@ -1,5 +1,5 @@
 class Player
-  attr_reader :marker
+  attr_reader :name, :marker, :score
 
   ROW_MAP = (:A..:Z).zip(0..25).to_h
 
@@ -10,8 +10,11 @@ class Player
   end
 
   def get_move
-    #[get_row, get_col]
     [get_coordinate("row"), get_coordinate("column")]
+  end
+
+  def increment_score
+    @score += 1
   end
 
   private

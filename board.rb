@@ -10,13 +10,13 @@ class Board
 
   def display
     output = "\n"
-    #generate frid with letter for each row
     output << generate_header
     output << generate_rows
     output << "\n"
   end
 
-  def winner?(marker)
+  def winner?(player)
+    marker = player.marker
     row_win?(marker) || column_win?(marker) || diagonal_win?(marker)
   end
 
@@ -24,11 +24,16 @@ class Board
     grid[y][x]
   end
 
-  def []=(y, x, marker)
-    if @grid[y][x] == :" " && [:X, :O].include?(marker)
-      grid[y][x] = marker
-    else
-      false
+  def place_marker(coordinates, marker)
+    y, x = coordinates
+    grid[y][x] = marker if @grid[y][x] == :" "
+  end
+
+  def no_more_spaces?
+    @grid.all? do |row|
+      row.all? do |cell|
+        cell != :" "
+      end
     end
   end
 

@@ -1,20 +1,6 @@
-require_relative 'game'
-require_relative 'player'
+require_relative 'session'
 
-players = [
-  Player.new("John", :X),
-  Player.new("Sasha", :O)
-]
-
-game = Game.new(players)
-
-puts "Welcome to TicTacToe"
-puts "It's player one's turn."
-game.display_board
-puts "Player one, pick a move."
-game.play_turn(players[0])
-puts game.display_board
-
+Session.new
 #TODO play turn(player)
 
   #TODO: Get a move from player one
